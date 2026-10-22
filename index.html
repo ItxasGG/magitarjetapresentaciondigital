@@ -70,6 +70,17 @@
     to   { opacity: 1; transform: none; }
   }
 
+  /* ---------- Logo ---------- */
+  .logo {
+    display: block;
+    width: 170px;
+    height: auto;
+    margin: -8px auto 22px;
+    /* Blanquea el fondo grisáceo de la imagen para que se funda con la tarjeta */
+    filter: brightness(1.08) contrast(1.12);
+    mix-blend-mode: multiply;
+  }
+
   /* ---------- Foto / iniciales ---------- */
   .avatar {
     width: 128px;
@@ -128,17 +139,6 @@
     font-weight: 400;
     color: var(--muted);
   }
-  .badge {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 6px 12px;
-    font-size: 12px;
-    color: var(--muted);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    background: #FBF7EF;
-  }
-  .badge strong { font-weight: 600; color: var(--ink); }
 
   .motto {
     margin: 22px auto 0;
@@ -430,6 +430,8 @@
 <body>
 
 <main class="card">
+  <img class="logo" src="logo.png" alt="Clínica ME · Clínica Médico Estética · Dra. Margarita Esteban" width="640" height="398">
+
   <div class="avatar" id="avatar">
     <img src="https://clinicamebilbao.com/wp-content/uploads/2025/02/Doctora-Margarita-Esteban-Herrero.jpeg"
          alt="Dra. Margarita Esteban Herrero" width="128" height="128"
@@ -440,7 +442,6 @@
   <h1>Dra. Margarita<br>Esteban Herrero</h1>
   <p class="role">Médica estética</p>
   <p class="org">Directora de Clínica ME Bilbao</p>
-  <span class="badge">Presidenta de <strong>GEMEON</strong></span>
 
   <p class="motto">“Medicina estética para sentirte bien, por dentro y por fuera.”</p>
 

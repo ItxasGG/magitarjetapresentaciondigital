@@ -258,6 +258,66 @@
     color: #fff;
   }
 
+  .qr-btn {
+    margin-top: 10px;
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .4px;
+    cursor: pointer;
+    transition: transform .15s ease, background .2s ease;
+  }
+  .qr-btn:active { transform: scale(.98); }
+  @media (hover: hover) { .qr-btn:hover { background: #f4ece2; } }
+  .qr-btn svg { width: 20px; height: 20px; }
+
+  /* ---------- Ventana del QR ---------- */
+  #qrSheet { margin: auto; }
+  .qr-box {
+    width: 232px;
+    height: 232px;
+    margin: 6px auto 14px;
+    padding: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+  }
+  .qr-box canvas,
+  .qr-box img { width: 100% !important; height: 100% !important; display: block; }
+  .qr-url {
+    font-size: 13px;
+    color: var(--muted);
+    word-break: break-all;
+    margin-bottom: 16px;
+  }
+  .qr-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .qr-actions button {
+    min-height: 48px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: #fbf8f4;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .qr-actions button.primary { background: var(--ink); border-color: var(--ink); color: #fff; }
+
   .share {
     margin-top: 22px;
     background: none;
@@ -409,6 +469,11 @@
     Guardar contacto
   </button>
 
+  <button class="qr-btn" type="button" id="showQr">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v3h-3z"/></svg>
+    Mostrar código QR
+  </button>
+
   <div class="social">
     <a href="https://www.instagram.com/clinicame.oficial/" target="_blank" rel="noopener" aria-label="Instagram Clínica ME oficial">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -425,7 +490,7 @@
     </a>
   </div>
 
-  <button class="share" type="button" id="share">Compartir esta tarjeta</button>
+  <button class="share" type="button" id="share">Compartir enlace de esta tarjeta</button>
   <footer>Clínica ME · Bilbao · Madrid</footer>
 </main>
 
@@ -439,9 +504,28 @@
   </div>
 </dialog>
 
+<!-- Código QR de la tarjeta -->
+<dialog id="qrSheet" aria-labelledby="qrTitle">
+  <div class="sheet">
+    <h2 id="qrTitle">Escanea mi tarjeta</h2>
+    <p>Apunta con la cámara del móvil</p>
+    <div class="qr-box" id="qrCode"></div>
+    <div class="qr-url" id="qrUrl"></div>
+    <div class="qr-actions">
+      <button type="button" id="copyLink">Copiar enlace</button>
+      <button type="button" class="primary" id="downloadQr">Descargar QR</button>
+    </div>
+    <button class="close" type="button" id="closeQr">Cerrar</button>
+  </div>
+</dialog>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+  // Dirección pública de la tarjeta (GitHub Pages). Si la publicas en otro sitio, cámbiala aquí.
+  const CARD_URL = "https://itxasgg.github.io/magitarjetapresentaciondigital/";
+  const PAGE_URL = location.protocol.startsWith("http") ? location.origin + location.pathname : CARD_URL;
   // ---------- Datos de contacto ----------
   const CONTACT = {
     prefix: "Dra.",
@@ -541,16 +625,67 @@
   });
 
   // ---------- Compartir ----------
-  document.getElementById("share").addEventListener("click", async () => {
-    const data = { title: CONTACT.fullName, text: "Tarjeta de " + CONTACT.fullName, url: location.href };
+  async function copyLink() {
     try {
-      if (navigator.share) {
-        await navigator.share(data);
-      } else {
-        await navigator.clipboard.writeText(location.href);
-        toast("Enlace copiado");
-      }
-    } catch (e) { /* el usuario canceló */ }
+      await navigator.clipboard.writeText(PAGE_URL);
+      toast("Enlace copiado");
+    } catch (e) {
+      prompt("Copia este enlace:", PAGE_URL);
+    }
+  }
+
+  document.getElementById("share").addEventListener("click", async () => {
+    const data = { title: CONTACT.fullName, text: "Tarjeta de " + CONTACT.fullName, url: PAGE_URL };
+    if (navigator.share) {
+      try { await navigator.share(data); } catch (e) { /* el usuario canceló */ }
+    } else {
+      copyLink();
+    }
+  });
+
+  // ---------- Código QR ----------
+  const qrSheet = document.getElementById("qrSheet");
+  const qrBox = document.getElementById("qrCode");
+  document.getElementById("qrUrl").textContent = PAGE_URL.replace(/^https?:\/\//, "");
+
+  function renderQr() {
+    if (qrBox.childElementCount || typeof QRCode === "undefined") return;
+    new QRCode(qrBox, {
+      text: PAGE_URL,
+      width: 600,
+      height: 600,
+      colorDark: "#2b2522",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  }
+
+  document.getElementById("showQr").addEventListener("click", () => {
+    renderQr();
+    if (!qrBox.childElementCount) qrBox.textContent = "No se pudo generar el QR. Comprueba la conexión.";
+    if (typeof qrSheet.showModal === "function") qrSheet.showModal();
+  });
+  document.getElementById("closeQr").addEventListener("click", () => qrSheet.close());
+  qrSheet.addEventListener("click", e => { if (e.target === qrSheet) qrSheet.close(); });
+  document.getElementById("copyLink").addEventListener("click", copyLink);
+
+  document.getElementById("downloadQr").addEventListener("click", () => {
+    const canvas = qrBox.querySelector("canvas");
+    if (!canvas) return;
+    // Añade un margen blanco para que el QR se lea bien al imprimirlo
+    const pad = 60;
+    const out = document.createElement("canvas");
+    out.width = canvas.width + pad * 2;
+    out.height = canvas.height + pad * 2;
+    const ctx = out.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, out.width, out.height);
+    ctx.drawImage(canvas, pad, pad);
+    const a = document.createElement("a");
+    a.href = out.toDataURL("image/png");
+    a.download = "QR-Dra-Margarita-Esteban-Herrero.png";
+    a.click();
+    toast("QR descargado");
   });
 
   // ---------- Aviso ----------

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dra. Margarita Esteban Herrero</title>
+<meta name="description" content="Médica estética. Directora de Clínica ME Bilbao y presidenta de la Asociación GEMEON.">
+<meta name="theme-color" content="#f6f1ea">
+
+<!-- Vista previa al compartir el enlace (WhatsApp, LinkedIn, etc.) -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Dra. Margarita Esteban Herrero">
+<meta property="og:description" content="Médica estética · Directora de Clínica ME Bilbao · Presidenta de GEMEON">
+<meta property="og:image" content="https://clinicamebilbao.com/wp-content/uploads/2025/02/Doctora-Margarita-Esteban-Herrero.jpeg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #f6f1ea;
+    --card: #fffdfa;
+    --ink: #2b2522;
+    --muted: #7a6f68;
+    --accent: #b08d6a;
+    --accent-dark: #8c6b4c;
+    --line: #e9e0d5;
+    --wa: #25d366;
+    --radius: 22px;
+    --shadow: 0 20px 50px -20px rgba(80, 55, 35, .25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    background:
+      radial-gradient(120% 60% at 50% 0%, #efe4d6 0%, transparent 70%),
+      var(--bg);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(20px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 36px 24px 26px;
+    text-align: center;
+    animation: rise .6s ease-out both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Foto / iniciales ---------- */
+  .avatar {
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(140deg, #d9bf9f, var(--accent) 50%, #e8d6bf);
+    position: relative;
+  }
+  .avatar img,
+  .avatar .initials {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--card);
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    background: #efe6da;
+  }
+  .avatar .initials {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    letter-spacing: 1px;
+  }
+  .avatar.no-photo img { display: none; }
+  .avatar.no-photo .initials { display: flex; }
+
+  /* ---------- Texto ---------- */
+  h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(27px, 7.4vw, 31px);
+    line-height: 1.1;
+    letter-spacing: .2px;
+  }
+  .role {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+  }
+  .org {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+  }
+  .badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #faf6f0;
+  }
+  .badge strong { font-weight: 500; color: var(--ink); }
+
+  .motto {
+    margin: 22px auto 0;
+    max-width: 300px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.35;
+    color: var(--ink);
+    position: relative;
+  }
+  .divider {
+    width: 44px;
+    height: 1px;
+    background: var(--accent);
+    margin: 22px auto;
+    opacity: .7;
+  }
+
+  /* ---------- Botones de contacto ---------- */
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 92px;
+    padding: 14px 6px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: #fbf8f4;
+    color: var(--ink);
+    text-decoration: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .action:active { transform: scale(.96); }
+  @media (hover: hover) {
+    .action:hover { background: #f4ece2; border-color: #dccbb6; }
+  }
+  .action .ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: var(--accent);
+  }
+  .action.whatsapp .ico { background: var(--wa); }
+  .action svg { width: 22px; height: 22px; }
+
+  /* ---------- Guardar contacto ---------- */
+  .save {
+    margin-top: 16px;
+    width: 100%;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .4px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px -12px rgba(43, 37, 34, .7);
+    transition: transform .15s ease, background .2s ease;
+  }
+  .save:active { transform: scale(.98); }
+  @media (hover: hover) { .save:hover { background: #3d3430; } }
+  .save svg { width: 20px; height: 20px; }
+
+  /* ---------- Redes ---------- */
+  .social {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .social a {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    color: var(--accent-dark);
+    background: var(--card);
+    position: relative;
+    transition: background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .social a:active { transform: scale(.94); }
+  @media (hover: hover) {
+    .social a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  }
+  .social svg { width: 20px; height: 20px; }
+  .social .tag {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 3px 4px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .share {
+    margin-top: 22px;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  footer {
+    margin-top: 8px;
+    font-size: 11px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #a89c93;
+  }
+
+  /* ---------- Selector de sede ---------- */
+  dialog {
+    border: 0;
+    padding: 0;
+    width: min(420px, calc(100% - 32px));
+    margin: auto auto max(16px, env(safe-area-inset-bottom));
+    border-radius: 24px;
+    background: var(--card);
+    color: var(--ink);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .35);
+  }
+  dialog::backdrop { background: rgba(43, 37, 34, .45); backdrop-filter: blur(2px); }
+  dialog[open] { animation: sheet .25s ease-out; }
+  @keyframes sheet {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+  }
+  .sheet { padding: 22px 18px 16px; text-align: center; }
+  .sheet h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    font-size: 23px;
+    margin-bottom: 4px;
+  }
+  .sheet p { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .sede {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fbf8f4;
+    color: var(--ink);
+    text-decoration: none;
+    text-align: left;
+  }
+  .sede:active { background: #f4ece2; }
+  .sede strong { display: block; font-weight: 500; font-size: 16px; }
+  .sede span { font-size: 14px; color: var(--muted); }
+  .sede svg { width: 18px; height: 18px; color: var(--accent-dark); flex: none; }
+  .close {
+    width: 100%;
+    margin-top: 4px;
+    padding: 12px;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 15px;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  /* ---------- Aviso ---------- */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translate(-50%, 20px);
+    background: var(--ink);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 340px) {
+    .card { padding: 28px 16px 22px; }
+    .actions { gap: 8px; }
+    .action { min-height: 84px; font-size: 13px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<main class="card">
+  <div class="avatar" id="avatar">
+    <img src="https://clinicamebilbao.com/wp-content/uploads/2025/02/Doctora-Margarita-Esteban-Herrero.jpeg"
+         alt="Dra. Margarita Esteban Herrero" width="128" height="128"
+         onerror="document.getElementById('avatar').classList.add('no-photo')">
+    <div class="initials" aria-hidden="true">ME</div>
+  </div>
+
+  <h1>Dra. Margarita<br>Esteban Herrero</h1>
+  <p class="role">Médica estética</p>
+  <p class="org">Directora de Clínica ME Bilbao</p>
+  <span class="badge">Presidenta de <strong>GEMEON</strong></span>
+
+  <p class="motto">“Medicina estética para sentirte bien, por dentro y por fuera.”</p>
+
+  <div class="divider"></div>
+
+  <nav class="actions" aria-label="Contacto">
+    <button class="action whatsapp" type="button" data-sheet="whatsapp">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 0 1 2.76 6.66c0 5.19-4.23 9.41-9.43 9.41zm8.03-17.44A11.27 11.27 0 0 0 12.05.75C5.79.75.7 5.84.7 12.1c0 2 .52 3.95 1.52 5.67L.6 23.65l6.02-1.58a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.03z"/></svg>
+      </span>
+      WhatsApp
+    </button>
+
+    <button class="action" type="button" data-sheet="phone">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      Llamar
+    </button>
+
+    <a class="action" href="mailto:info@clinicamebilbao.com">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/></svg>
+      </span>
+      Email
+    </a>
+  </nav>
+
+  <button class="save" type="button" id="saveContact">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+    Guardar contacto
+  </button>
+
+  <div class="social">
+    <a href="https://www.instagram.com/clinicame.oficial/" target="_blank" rel="noopener" aria-label="Instagram Clínica ME oficial">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.instagram.com/clinicame.bilbao/" target="_blank" rel="noopener" aria-label="Instagram Clínica ME Bilbao">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <span class="tag">BIL</span>
+    </a>
+    <a href="https://www.linkedin.com/in/dra-margarita-esteban-herrero-bb647292/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+    <a href="https://clinicamebilbao.com/" target="_blank" rel="noopener" aria-label="Web Clínica ME Bilbao">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+    </a>
+  </div>
+
+  <button class="share" type="button" id="share">Compartir esta tarjeta</button>
+  <footer>Clínica ME · Bilbao · Madrid</footer>
+</main>
+
+<!-- Selector de sede (WhatsApp / Llamar) -->
+<dialog id="sheet" aria-labelledby="sheetTitle">
+  <div class="sheet">
+    <h2 id="sheetTitle"></h2>
+    <p>Elige la sede</p>
+    <div id="sheetOptions"></div>
+    <button class="close" type="button" id="closeSheet">Cancelar</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // ---------- Datos de contacto ----------
+  const CONTACT = {
+    prefix: "Dra.",
+    firstName: "Margarita",
+    lastName: "Esteban Herrero",
+    fullName: "Dra. Margarita Esteban Herrero",
+    title: "Médica estética · Directora de Clínica ME Bilbao",
+    org: "Clínica ME Bilbao",
+    email: "info@clinicamebilbao.com",
+    web: "https://clinicamebilbao.com/",
+    linkedin: "https://www.linkedin.com/in/dra-margarita-esteban-herrero-bb647292/",
+    instagram: [
+      "https://www.instagram.com/clinicame.oficial/",
+      "https://www.instagram.com/clinicame.bilbao/"
+    ],
+    photo: "https://clinicamebilbao.com/wp-content/uploads/2025/02/Doctora-Margarita-Esteban-Herrero.jpeg",
+    note: "Presidenta y socia fundadora de la Asociación GEMEON (Grupo de Expertos en Medicina Estética Oncológica).",
+    sedes: [
+      { name: "Bilbao", display: "689 707 317", phone: "+34689707317" },
+      { name: "Madrid", display: "621 35 86 55", phone: "+34621358655" }
+    ]
+  };
+
+  // ---------- Selector de sede ----------
+  const sheet = document.getElementById("sheet");
+  const sheetTitle = document.getElementById("sheetTitle");
+  const sheetOptions = document.getElementById("sheetOptions");
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+
+  function openSheet(type) {
+    const isWa = type === "whatsapp";
+    sheetTitle.textContent = isWa ? "Escribir por WhatsApp" : "Llamar";
+    sheetOptions.innerHTML = CONTACT.sedes.map(s => {
+      const href = isWa ? "https://wa.me/" + s.phone.replace("+", "") : "tel:" + s.phone;
+      const target = isWa ? ' target="_blank" rel="noopener"' : "";
+      return `<a class="sede" href="${href}"${target}>
+                <div><strong>${s.name}</strong><span>${s.display}</span></div>${arrow}
+              </a>`;
+    }).join("");
+
+    if (typeof sheet.showModal === "function") {
+      sheet.showModal();
+    } else {
+      // Navegadores muy antiguos: abre directamente la primera sede
+      location.href = sheetOptions.querySelector("a").href;
+    }
+  }
+
+  document.querySelectorAll("[data-sheet]").forEach(btn =>
+    btn.addEventListener("click", () => openSheet(btn.dataset.sheet))
+  );
+  document.getElementById("closeSheet").addEventListener("click", () => sheet.close());
+  sheet.addEventListener("click", e => { if (e.target === sheet) sheet.close(); });
+  sheetOptions.addEventListener("click", e => { if (e.target.closest("a")) setTimeout(() => sheet.close(), 300); });
+
+  // ---------- vCard ----------
+  function esc(v) {
+    return String(v).replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\\;");
+  }
+
+  function buildVCard() {
+    const c = CONTACT;
+    const lines = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      `N;CHARSET=UTF-8:${esc(c.lastName)};${esc(c.firstName)};;${esc(c.prefix)};`,
+      `FN;CHARSET=UTF-8:${esc(c.fullName)}`,
+      `ORG;CHARSET=UTF-8:${esc(c.org)}`,
+      `TITLE;CHARSET=UTF-8:${esc(c.title)}`,
+      // Cada teléfono lleva su etiqueta de sede (iOS / macOS)
+      ...c.sedes.flatMap((s, i) => [
+        `item${i + 1}.TEL;TYPE=CELL,VOICE:${s.phone}`,
+        `item${i + 1}.X-ABLabel:${s.name}`
+      ]),
+      `EMAIL;TYPE=INTERNET,WORK:${c.email}`,
+      `URL;TYPE=WORK:${c.web}`,
+      `X-SOCIALPROFILE;TYPE=linkedin:${c.linkedin}`,
+      ...c.instagram.map(u => `X-SOCIALPROFILE;TYPE=instagram:${u}`),
+      `PHOTO;VALUE=URI:${c.photo}`,
+      `NOTE;CHARSET=UTF-8:${esc(c.note + "\nBilbao: " + c.sedes[0].display + " · Madrid: " + c.sedes[1].display)}`,
+      "END:VCARD"
+    ];
+    return lines.join("\r\n") + "\r\n";
+  }
+
+  document.getElementById("saveContact").addEventListener("click", () => {
+    const blob = new Blob([buildVCard()], { type: "text/vcard;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Dra-Margarita-Esteban-Herrero.vcf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    toast("Contacto descargado");
+  });
+
+  // ---------- Compartir ----------
+  document.getElementById("share").addEventListener("click", async () => {
+    const data = { title: CONTACT.fullName, text: "Tarjeta de " + CONTACT.fullName, url: location.href };
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        await navigator.clipboard.writeText(location.href);
+        toast("Enlace copiado");
+      }
+    } catch (e) { /* el usuario canceló */ }
+  });
+
+  // ---------- Aviso ----------
+  let toastTimer;
+  function toast(msg) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+  }
+</script>
+</body>
+</html>
